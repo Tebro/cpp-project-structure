@@ -5,6 +5,7 @@ TARGET=bin/main
 BUILDDIR=build
 SRCDIR=src
 INC=-I include
+CXXFLAGS=-g
 
 SRCEXT=cpp
 SOURCES=$(shell find $(SRCDIR) -type f -name *.$(SRCEXT))
@@ -18,7 +19,7 @@ $(TARGET): $(OBJECTS)
 
 $(BUILDDIR)/%.o: $(SRCDIR)/%.$(SRCEXT)
 	@mkdir -p $(BUILDDIR)
-	$(CXX) $(INC) -c -o $@ $<
+	$(CXX) $(CXXFLAGS) $(INC) -c -o $@ $<
 
 clean:
 	$(RM) $(BUILDDIR) $(TARGET)
